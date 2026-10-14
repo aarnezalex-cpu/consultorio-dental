@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Preconsultorio dental: información sobre servicios, prevención y atención odontológica.">
+  <title>Sonrisa Clara | Preconsultorio Dental</title>
+  <style>
+    :root{
+      --navy:#123b4a; --teal:#0d9488; --mint:#dff7f1; --cream:#fbfdfc;
+      --ink:#18323a; --muted:#5f7379; --white:#fff; --line:#dce9e7;
+      --shadow:0 18px 45px rgba(18,59,74,.10); --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--cream);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    .container{width:min(1120px,calc(100% - 40px));margin:auto}
+    header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(220,233,231,.8)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:11px;font-weight:850;letter-spacing:-.4px;color:var(--navy);font-size:1.08rem}
+    .brand-mark{width:42px;height:42px;border-radius:14px;background:var(--teal);display:grid;place-items:center;color:white;box-shadow:0 8px 18px rgba(13,148,136,.22)}
+    .brand-mark svg{width:25px;height:25px}
+    .nav-links{display:flex;align-items:center;gap:27px;color:#456168;font-size:.94rem;font-weight:650}
+    .nav-links a:hover{color:var(--teal)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:999px;padding:13px 20px;font-weight:750;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--teal);color:white;box-shadow:0 10px 20px rgba(13,148,136,.18)}
+    .btn-primary:hover{background:#087d74}
+    .btn-light{background:white;color:var(--navy);border:1px solid var(--line)}
+    .menu-toggle{display:none;background:white;border:1px solid var(--line);border-radius:12px;width:44px;height:44px;cursor:pointer;color:var(--navy)}
+    .hero{padding:76px 0 70px;background:radial-gradient(circle at 84% 22%,#d8f7ee 0,transparent 28%),linear-gradient(135deg,#f8fdfb,#eefaf7)}
+    .hero-grid{display:grid;grid-template-columns:1.04fr .96fr;align-items:center;gap:52px}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;background:#e0f6ef;color:#087d74;border-radius:999px;padding:7px 12px;font-size:.82rem;font-weight:800;letter-spacing:.3px}
+    .eyebrow-dot{width:7px;height:7px;background:var(--teal);border-radius:50%}
+    h1{font-size:clamp(2.6rem,5.4vw,4.55rem);line-height:1.04;letter-spacing:-2.8px;color:var(--navy);margin:22px 0}
+    h1 span{color:var(--teal)}
+    .hero-copy{max-width:560px;color:var(--muted);font-size:1.08rem;margin-bottom:27px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+    .trust-row{display:flex;gap:24px;flex-wrap:wrap;margin-top:30px;color:#526b70;font-size:.88rem;font-weight:650}
+    .trust-row span{display:flex;align-items:center;gap:7px}
+    .check{display:inline-grid;place-items:center;width:21px;height:21px;border-radius:50%;background:#d7f4e9;color:#087d74;font-size:.8rem;font-weight:900}
+    .hero-art{position:relative;min-height:420px;display:grid;place-items:center}
+    .art-card{position:relative;width:min(100%,450px);height:390px;border-radius:34px;background:linear-gradient(145deg,#b8eee2,#e9faf5);overflow:hidden;box-shadow:var(--shadow)}
+    .art-circle{position:absolute;width:300px;height:300px;border-radius:50%;background:#fff;opacity:.8;right:-50px;top:-60px}
+    .art-circle2{position:absolute;width:230px;height:230px;border-radius:50%;background:#86d9ca;opacity:.55;left:-70px;bottom:-70px}
+    .tooth{position:absolute;width:190px;height:235px;left:50%;top:48%;transform:translate(-50%,-50%) rotate(-5deg);filter:drop-shadow(0 20px 16px rgba(18,59,74,.12))}
+    .float-note{position:absolute;background:white;border:1px solid #e7f0ed;padding:13px 16px;border-radius:17px;box-shadow:var(--shadow);display:flex;align-items:center;gap:11px;font-weight:750;color:var(--navy)}
+    .float-note small{display:block;font-weight:500;color:var(--muted);font-size:.76rem}
+    .float-icon{width:39px;height:39px;border-radius:13px;background:var(--mint);display:grid;place-items:center;color:var(--teal);font-size:1.25rem}
+    .note-top{top:35px;left:-16px}.note-bottom{right:-14px;bottom:30px}
+    section{padding:78px 0}
+    .section-head{text-align:center;max-width:650px;margin:0 auto 42px}
+    .kicker{color:var(--teal);font-size:.78rem;font-weight:850;letter-spacing:1.7px;text-transform:uppercase}
+    h2{font-size:clamp(2rem,3.5vw,3rem);line-height:1.13;letter-spacing:-1.2px;color:var(--navy);margin:12px 0 14px}
+    .section-head p{color:var(--muted);margin:0}
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .service{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:transform .2s,box-shadow .2s}
+    .service:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .service-icon{width:54px;height:54px;border-radius:17px;background:var(--mint);display:grid;place-items:center;color:var(--teal);font-size:1.55rem;margin-bottom:20px}
+    .service h3{color:var(--navy);font-size:1.12rem;margin:0 0 9px}
+    .service p{margin:0;color:var(--muted);font-size:.94rem}
+    .about{background:#f0faf7}
+    .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:60px}
+    .about-visual{background:linear-gradient(145deg,#d5f5eb,#f9fffc);border-radius:30px;min-height:350px;display:grid;place-items:center;position:relative;overflow:hidden}
+    .about-visual .big-icon{font-size:8rem;filter:drop-shadow(0 15px 10px rgba(18,59,74,.12))}
+    .about-bubble{position:absolute;background:white;border-radius:18px;padding:13px 17px;box-shadow:var(--shadow);font-weight:750;color:var(--navy)}
+    .bubble-a{left:20px;top:25px}.bubble-b{right:20px;bottom:24px}
+    .about-copy p{color:var(--muted)}
+    .values{display:grid;grid-template-columns:1fr 1fr;gap:17px;margin-top:25px}
+    .value{display:flex;gap:11px;align-items:flex-start}
+    .value strong{display:block;color:var(--navy);margin-bottom:2px}
+    .value small{color:var(--muted)}
+    .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:step}
+    .step{padding:24px 22px;border-left:2px solid #bce9dd;position:relative}
+    .step-number{width:38px;height:38px;border-radius:13px;background:var(--teal);color:white;display:grid;place-items:center;font-weight:850;margin-bottom:17px}
+    .step h3{margin:0 0 8px;color:var(--navy)}.step p{margin:0;color:var(--muted);font-size:.94rem}
+    .faq{background:#f8fcfb}
+    .faq-list{max-width:800px;margin:auto;display:grid;gap:12px}
+    .faq-item{border:1px solid var(--line);background:white;border-radius:16px;overflow:hidden}
+    .faq-question{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:19px 21px;background:white;border:0;text-align:left;font-weight:800;color:var(--navy);cursor:pointer}
+    .faq-question span:last-child{font-size:1.4rem;color:var(--teal);transition:transform .2s}
+    .faq-answer{display:none;padding:0 21px 19px;color:var(--muted)}
+    .faq-item.open .faq-answer{display:block}.faq-item.open .faq-question span:last-child{transform:rotate(45deg)}
+    .contact{padding:70px 0}
+    .contact-panel{background:var(--navy);color:white;border-radius:30px;padding:44px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;overflow:hidden;position:relative}
+    .contact-panel:after{content:"";position:absolute;width:250px;height:250px;border-radius:50%;border:45px solid rgba(255,255,255,.06);right:170px;top:-120px}
+    .contact-panel h2{color:white;max-width:600px;margin-top:0}.contact-panel p{color:#c6dadd;max-width:580px;margin-bottom:0}
+    .contact-panel .btn{position:relative;z-index:1;white-space:nowrap}
+    footer{padding:27px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.87rem}
+    .footer-row{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+    .footer-links{display:flex;gap:18px}
+    .footer-links a:hover{color:var(--teal)}
+    .notice{font-size:.8rem;color:#71858a;margin-top:18px;text-align:center}
+    @media(max-width:850px){
+      .nav-links{gap:15px}.nav-links .nav-cta{display:none}
+      .hero-grid{grid-template-columns:1fr;gap:25px}.hero-copy{max-width:650px}
+      .hero-art{min-height:360px}.art-card{height:340px;max-width:430px}
+      .tooth{width:160px;height:200px}
+      .about-grid{grid-template-columns:1fr;gap:35px}.about-visual{min-height:290px}
+      .contact-panel{grid-template-columns:1fr;padding:35px}.contact-panel .btn{justify-self:start}
+    }
+    @media(max-width:640px){
+      .container{width:min(100% - 30px,1120px)}.nav{height:68px}
+      .menu-toggle{display:grid;place-items:center}
+      .nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:white;padding:18px 22px 22px;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}
+      .nav-links.show{display:flex}.nav-links a{padding:12px 0;border-bottom:1px solid #eef4f2}.nav-links .nav-cta{display:flex;margin-top:12px}
+      .hero{padding:52px 0 45px}h1{letter-spacing:-1.8px}
+      .hero-copy{font-size:1rem}.hero-art{min-height:310px}.art-card{height:290px;border-radius:25px}
+      .tooth{width:130px;height:165px}.note-top{left:0;top:18px}.note-bottom{right:0;bottom:15px}
+      .float-note{padding:10px 12px;font-size:.86rem}.float-icon{width:32px;height:32px}
+      section{padding:60px 0}.services-grid,.steps-grid{grid-template-columns:1fr}
+      .service{padding:23px}.values{grid-template-columns:1fr}
+      .about-visual{min-height:250px}.about-visual .big-icon{font-size:6rem}
+      .contact-panel{padding:28px 23px;border-radius:23px}.contact-panel .btn{white-space:normal}
+      .footer-row{align-items:flex-start;flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#inicio" aria-label="Sonrisa Clara, inicio">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M7.2 3.4c-2.2 0-3.6 1.8-3.2 4.2l1.2 7.1c.4 2.5 1.4 5.9 3 5.9 1.3 0 1.4-4.8 3.8-4.8s2.5 4.8 3.8 4.8c1.6 0 2.6-3.4 3-5.9L20 7.6c.4-2.4-1-4.2-3.2-4.2-1.9 0-2.9 1.2-4.8 1.2S9.1 3.4 7.2 3.4Z" fill="currentColor"/></svg>
+      </span>
+      <span>Sonrisa Clara</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#proceso">Cómo funciona</a>
+      <a href="#preguntas">Preguntas</a>
+      <a class="btn btn-primary nav-cta" href="#contacto">Solicitar información</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Cuidado dental cercano y preventivo</div>
+        <h1>Una sonrisa sana empieza con <span>cuidado.</span></h1>
+        <p class="hero-copy">Un espacio pensado para orientarte sobre salud bucal, prevención y atención odontológica. Conoce nuestros servicios y encuentra información para cuidar mejor tu sonrisa.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#servicios">Conocer servicios <span aria-hidden="true">→</span></a>
+          <a class="btn btn-light" href="#contacto">Información de contacto</a>
+        </div>
+        <div class="trust-row">
+          <span><i class="check">✓</i> Atención cordial</span>
+          <span><i class="check">✓</i> Enfoque preventivo</span>
+          <span><i class="check">✓</i> Información clara</span>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="Ilustración dental decorativa">
+        <div class="art-card">
+          <div class="art-circle"></div><div class="art-circle2"></div>
+          <svg class="tooth" viewBox="0 0 200 250" fill="none" aria-hidden="true">
+            <path d="M43 22C20 22 10 43 17 70l15 88c5 28 17 65 31 65 13 0 14-57 37-57s24 57 37 57c14 0 26-37 31-65l15-88c7-27-3-48-26-48-20 0-32 15-57 15S63 22 43 22Z" fill="white" stroke="#d5e9e5" stroke-width="4"/>
+            <path d="M42 43c-8 1-13 10-10 22l8 43" stroke="#f0f8f6" stroke-width="8" stroke-linecap="round"/>
+            <path d="M66 53c8-5 17-7 26-7" stroke="#dff7f1" stroke-width="6" stroke-linecap="round"/>
+            <path d="M120 40c12 0 20 4 27 12" stroke="#e8f6f3" stroke-width="6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="float-note note-top"><span class="float-icon">✦</span><span>Tu salud primero<small>Hábitos que ayudan</small></span></div>
+        <div class="float-note note-bottom"><span class="float-icon">♡</span><span>Sonrisas cuidadas<small>Prevención diaria</small></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Nuestros servicios</div>
+        <h2>Información para cuidar tu salud bucal</h2>
+        <p>Estos son algunos de los servicios que puede ofrecer un consultorio dental. La atención concreta debe confirmarse directamente con el establecimiento.</p>
+      </div>
+      <div class="services-grid">
+        <article class="service"><div class="service-icon">✧</div><h3>Evaluación odontológica</h3><p>Revisión inicial para conocer el estado general de la boca y orientar los siguientes pasos de atención.</p></article>
+        <article class="service"><div class="service-icon">☼</div><h3>Limpieza dental</h3><p>Información sobre higiene profesional y cuidados para ayudar a mantener dientes y encías saludables.</p></article>
+        <article class="service"><div class="service-icon">＋</div><h3>Prevención de caries</h3><p>Consejos de higiene, alimentación y hábitos que ayudan a reducir el riesgo de caries.</p></article>
+        <article class="service"><div class="service-icon">♡</div><h3>Orientación de higiene</h3><p>Aprende técnicas básicas de cepillado, uso de hilo dental y cuidado cotidiano de las encías.</p></article>
+        <article class="service"><div class="service-icon">☻</div><h3>Atención para niños</h3><p>Orientación para acompañar a niñas y niños en la creación de hábitos de cuidado bucal.</p></article>
+        <article class="service"><div class="service-icon">⌁</div><h3>Derivación y seguimiento</h3><p>Cuando se requiera atención especializada, se puede orientar al paciente para consultar con un profesional adecuado.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="nosotros">
+    <div class="container about-grid">
+      <div class="about-visual">
+        <span class="about-bubble bubble-a">Cuidado con confianza</span>
+        <div class="big-icon" aria-hidden="true">🦷</div>
+        <span class="about-bubble bubble-b">Prevenir es sonreír</span>
+      </div>
+      <div class="about-copy">
+        <div class="kicker">Sobre el preconsultorio</div>
+        <h2>Un primer paso para una sonrisa saludable</h2>
+        <p>Sonrisa Clara es una maqueta informativa de un preconsultorio dental: presenta información general, explica posibles servicios y ayuda a que los visitantes sepan cómo solicitar orientación.</p>
+        <p>La idea es ofrecer una experiencia sencilla, amable y fácil de usar desde el celular o la computadora.</p>
+        <div class="values">
+          <div class="value"><span class="check">✓</span><div><strong>Claridad</strong><small>Información sencilla y directa.</small></div></div>
+          <div class="value"><span class="check">✓</span><div><strong>Prevención</strong><small>Promoción de buenos hábitos.</small></div></div>
+          <div class="value"><span class="check">✓</span><div><strong>Cercanía</strong><small>Un trato respetuoso y cordial.</small></div></div>
+          <div class="value"><span class="check">✓</span><div><strong>Accesibilidad</strong><small>Diseño adaptable a pantallas.</small></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proceso">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Cómo funciona</div>
+        <h2>¿Cómo puedes empezar?</h2>
+        <p>Tres pasos sencillos para encontrar información y organizar una consulta.</p>
+      </div>
+      <div class="steps-grid">
+        <article class="step"><div class="step-number">01</div><h3>Explora la información</h3><p>Revisa los servicios y las recomendaciones generales de salud bucal disponibles en esta página.</p></article>
+        <article class="step"><div class="step-number">02</div><h3>Consulta tus dudas</h3><p>Utiliza los datos de contacto del establecimiento para preguntar por atención, horarios y disponibilidad.</p></article>
+        <article class="step"><div class="step-number">03</div><h3>Confirma tu visita</h3><p>Antes de acudir, confirma directamente la dirección, el horario y el tipo de atención ofrecida.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="preguntas">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Preguntas frecuentes</div>
+        <h2>Resolvemos algunas dudas</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>¿Cada cuánto debo visitar al dentista?</span><span>＋</span></button><div class="faq-answer">La frecuencia depende de cada persona y de su salud bucal. Un profesional puede recomendar un intervalo adecuado después de evaluar tus necesidades.</div></div>
+        <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>¿Qué puedo hacer para prevenir las caries?</span><span>＋</span></button><div class="faq-answer">Cepíllate con pasta dental con flúor, limpia entre los dientes a diario, limita el consumo frecuente de azúcar y consulta a un profesional para recibir recomendaciones personalizadas.</div></div>
+        <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>¿La página permite reservar una cita?</span><span>＋</span></button><div class="faq-answer">No por el momento. Esta versión es informativa y no utiliza una base de datos ni guarda solicitudes. Puedes añadir un número de teléfono o WhatsApp real en la sección de contacto.</div></div>
+        <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>¿Qué hago si tengo dolor dental intenso?</span><span>＋</span></button><div class="faq-answer">Busca atención odontológica lo antes posible. Si el dolor se acompaña de hinchazón importante, fiebre o dificultad para respirar o tragar, busca atención médica urgente.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contacto">
+    <div class="container">
+      <div class="contact-panel">
+        <div>
+          <div class="kicker" style="color:#8de4d2">Contacto</div>
+          <h2>¿Quieres más información?</h2>
+          <p>Comunícate con el consultorio para consultar los servicios disponibles, horarios y ubicación. Completa los datos reales antes de publicar esta página.</p>
+        </div>
+        <a class="btn btn-light" href="mailto:contacto@tudominio.com?subject=Consulta%20odontol%C3%B3gica">✉ Escribir un correo</a>
+      </div>
+      <p class="notice">Aviso: este sitio es una plantilla informativa. Reemplaza el nombre, correo, dirección y servicios por los datos reales del consultorio. El contenido no sustituye una evaluación odontológica profesional.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <a class="brand" href="#inicio"><span class="brand-mark" aria-hidden="true">✦</span><span>Sonrisa Clara</span></a>
+    <span>© <span id="year"></span> Sonrisa Clara · Preconsultorio dental</span>
+    <div class="footer-links"><a href="#servicios">Servicios</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a></div>
+  </div>
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  menuToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('show');
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+    menuToggle.textContent = isOpen ? '✕' : '☰';
+  });
+
+  document.querySelectorAll('#navLinks a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('show');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.textContent = '☰';
+    });
+  });
+
+  document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+      const item = button.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(other => {
+        other.classList.remove('open');
+        other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) {
+        item.classList.add('open');
+        button.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
